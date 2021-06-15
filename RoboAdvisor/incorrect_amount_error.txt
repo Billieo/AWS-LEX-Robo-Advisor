@@ -1,0 +1,20 @@
+{
+  "alternativeIntents": [],
+  "botVersion": "$LATEST",
+  "dialogState": "Fulfilled",
+  "intentName": "RecommendPortfolio",
+  "message": "Joe, thank you for your information;\n            based on the risk level you defined, my recommendation is to choose an investment portfolio with 0% bonds (AGG), 100% equities (SPY)\n            ",
+  "messageFormat": "PlainText",
+  "responseCard": null,
+  "sentimentResponse": null,
+  "sessionAttributes": {},
+  "sessionId": "2021-06-15T19:39:23.797Z-SiYNRHhy",
+  "slotToElicit": null,
+  "slots": {
+    "Thanks": null,
+    "age": "64",
+    "firstName": "Joe",
+    "investmentAmount": "6000",
+    "riskLevel": "Very High"
+  }
+}
