@@ -1,4 +1,4 @@
-### Required Libraries ###
+ ### Required Libraries ###
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -82,14 +82,13 @@ def close(session_attributes, fulfillment_state, message):
     return response
 
 def risk_name(risk_level):
-    risk_level = risk_level.lower()
     if risk_level is not None:
         if risk_level == "none":
             return "100% bonds (AGG), 0% equities (SPY)"
         elif risk_level == "very low":
             return "80% bonds (AGG), 20% equities (SPY)"
         elif risk_level == "low":
-            return "low" "60% bonds (AGG), 40% equities (SPY)
+            return "60% bonds (AGG), 40% equities (SPY)"
         elif risk_level == "medium":
             return "40% bonds (AGG), 60% equities (SPY)"
         elif risk_level == "high":
