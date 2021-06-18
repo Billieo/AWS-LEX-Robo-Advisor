@@ -1,4 +1,4 @@
- ### Required Libraries ###
+### Required Libraries ###
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -18,14 +18,13 @@ def build_validation_result(is_valid, violated_slot, message_content):
     Define a result message structured as Lex response.
     """
     if message_content is None:
-        return {"isValid": is_valid, "violatedSlot": violated_slot }
+        return {"isValid": is_valid, "violatedSlot": violated_slot}
 
     return {
         "isValid": is_valid,
         "violatedSlot": violated_slot,
         "message": {"contentType": "PlainText", "content": message_content},
     }
-
 
 
 ### Dialog Actions Helper Functions ###
@@ -49,7 +48,6 @@ def elicit_slot(session_attributes, intent_name, slots, slot_to_elicit, message)
             "slots": slots,
             "slotToElicit": slot_to_elicit,
             "message": message,
-
         },
     }
 
@@ -81,8 +79,8 @@ def close(session_attributes, fulfillment_state, message):
 
     return response
 
+
 def risk_name(risk_level):
-    if risk_level is not None:
         if risk_level == "none":
             return "100% bonds (AGG), 0% equities (SPY)"
         elif risk_level == "very low":
@@ -95,11 +93,11 @@ def risk_name(risk_level):
             return "20% bonds (AGG), 80% equities (SPY)"
         elif risk_level == "very high":
             return "0% bonds (AGG), 100% equities (SPY)"
+        else: return "text"    
    
-# A True results is returned if risk level is valid
-    return build_validation_result(True, None, None)
 
-def validate_data(first_name, age_input, usd_amount, risk_level, intent_request):
+
+def validate_data(age_input, usd_amount, intent_request):
     """
     Validates the data provided by the user.
     """
@@ -162,7 +160,7 @@ def recommend_portfolio(intent_request):
         
         ### YOUR DATA VALIDATION CODE STARTS HERE ###
   
-        validation_result = validate_data(first_name, age, investment_amount, risk_level, intent_request)
+        validation_result = validate_data(age, investment_amount, intent_request)
         if not validation_result["isValid"]:
             slots[validation_result["violatedSlot"]] = None  # Cleans invalid slot
 
@@ -187,7 +185,7 @@ def recommend_portfolio(intent_request):
 
     ### YOUR FINAL INVESTMENT RECOMMENDATION CODE STARTS HERE ###
     # call risk_name function to assign type of risk
-    assigned_risk = risk_name(risk_level)
+    assigned_risk = risk_name(risk_level.lower())
     
     ### YOUR FINAL INVESTMENT RECOMMENDATION CODE ENDS HERE ###
 
