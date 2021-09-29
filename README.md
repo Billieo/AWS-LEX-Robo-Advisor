@@ -1,4 +1,4 @@
-# AWS LEX unit13-challenge
+# AWS LEX Robo Advisor for Retirement Plans
 
 - Created a new custom Amazon Lex bot from AWS Management Console
 
